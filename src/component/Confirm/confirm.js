@@ -11,23 +11,36 @@ const Confirm = ({setOrderConfirm}) => {
     const navigate=useNavigate()
     useEffect(() => {
         let datas = JSON.parse(localStorage.getItem("orderDeatils"))
-        let orderData = JSON.parse(localStorage.getItem("order"))
-        setArr(orderData)
+        const localStorageTrans=JSON.parse(localStorage.getItem("order"));
+        let transaction=localStorage.getItem("order")
+        !==null?localStorageTrans:[
+            {lettuce:0,tomato:0,onion:0,cheese:0,beef:0,totalPrice:45,FirstName:"vishak",LastName:"T V",email:"vishakvenu91@gmail.com",street:"Thaivelikakth",pincode:"682301",address:"Thaivelikakth 2n floor","select":"cod"}
+        ]
+
+        console.log(transaction)
+        setArr(transaction)
+        localStorage.setItem("order",JSON.stringify(arr))
+        
         setdata(datas)
         if(!datas.hasOwnProperty("lettuce")){
             navigate("/")
         }
-        
-        // console.log(data) 
+    
     }, []);
-    // console.log(data)
-    useEffect(()=>{localStorage.setItem("order",JSON.stringify(arr))},[arr])
+    
+    useEffect(()=>{
+    localStorage.setItem("order",JSON.stringify(arr))
+    },[arr])
+
     const submitHandler = () => {
             setBtnValue(true)
-            let vere = [...arr,data,]
-            setArr(vere)
             
-            // console.log(arr)
+                let vere = [...arr,data,]
+                setArr(vere)
+                
+            
+            
+            
             
             setTimeout(()=>{
                 

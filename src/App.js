@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Alert } from 'react-bootstrap';
-import { BrowserRouter,Routes,Route,useNavigate } from 'react-router-dom';
+import { BrowserRouter,Routes,Route,useNavigate, Link } from 'react-router-dom';
 import './App.css';
 import Burger from './component/Burger/BurgerComponent/Burger';
 import Confirm from './component/Confirm/confirm';
@@ -33,7 +33,7 @@ function App() {
     <Alert.Heading>Order Placed Succesfully</Alert.Heading>
   <p>
     Enjoy your meal  
-    <Alert.Link href="/orders"> view Orders</Alert.Link>
+    <Link to="/orders"> view Orders</Link>
   </p>
   </Alert>
     </div>
