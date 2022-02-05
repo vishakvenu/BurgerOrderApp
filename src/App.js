@@ -1,56 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import React, { useEffect, useRef, useState } from 'react';
+import { Alert } from 'react-bootstrap';
+import { BrowserRouter,Routes,Route,useNavigate } from 'react-router-dom';
 import './App.css';
+import Burger from './component/Burger/BurgerComponent/Burger';
+import Confirm from './component/Confirm/confirm';
+import FormField from './component/Form/Form';
+import Nav from './component/nav/nav';
+import Order from './component/Orders/Order';
 
 function App() {
+  const navigate=useNavigate()
+  const alertRef=useRef(null)
+  const [orderConfirm, setOrderConfirm] = useState(false);
+
+  useEffect(()=>{
+    if(orderConfirm){
+      setTimeout(()=>{setOrderConfirm(false)},5000)
+    }
+
+  },[orderConfirm])
+
+  const removeHandler=(e)=>{
+    setOrderConfirm(false)
+    
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <Nav />
+    {orderConfirm &&
+    <div className="sucessModal" onClick={removeHandler}>
+    <Alert variant="success" className='alertModel' ref={alertRef}>
+    <Alert.Heading>Order Placed Succesfully</Alert.Heading>
+  <p>
+    Enjoy your meal  
+    <Alert.Link href="/orders"> view Orders</Alert.Link>
+  </p>
+  </Alert>
+    </div>
+   }
+    
+    <Routes>
+    <Route path="/" element={<Burger />} />
+    <Route path="/form" element={<FormField />} />
+    <Route path="/confirm" element={<Confirm navigate={navigate} setOrderConfirm={setOrderConfirm}/>} />
+    <Route path="/orders" element={<Order  />} />
+    </Routes>
+    
+    
     </div>
   );
 }
