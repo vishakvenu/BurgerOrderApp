@@ -1,9 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const Order = () => {
-  return (<div>
-      orders
-  </div>);
+  return <div>orders</div>;
 };
 
 export default Order;

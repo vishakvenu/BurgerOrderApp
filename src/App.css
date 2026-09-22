@@ -7,22 +7,22 @@
   position: relative;
   /* min-height: 100vh; */
 }
-*{
+* {
   box-sizing: border-box;
 }
-.sucessModal{
+.sucessModal {
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.699);
 }
-.alertModel{
-  z-index:99;
+.alertModel {
+  z-index: 99;
 }
 
 /* @media (prefers-reduced-motion: no-preference) {

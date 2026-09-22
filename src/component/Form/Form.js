@@ -2,7 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { addCheckOutDetails } from "../../features/BurgerSlice";
-import { Button, Col, Container, Row, Form,FloatingLabel } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Container,
+  Row,
+  Form,
+  FloatingLabel,
+} from "react-bootstrap";
 
 const FormFIeld = () => {
   const navigate = useNavigate();
@@ -32,7 +39,7 @@ const FormFIeld = () => {
     e.preventDefault();
     let data = {
       ...checkoutState,
-      ...inputValue
+      ...inputValue,
     };
     dispatch(addCheckOutDetails(data));
     localStorage.setItem("orderDeatils", JSON.stringify(data));
@@ -42,7 +49,12 @@ const FormFIeld = () => {
   return (
     <Container fluid="md" className="mt-4">
       <h1 className="text-center">Order Form</h1>
-      <Form className="my-4" onSubmit={submitHandler} ref={inputRef} method="post">
+      <Form
+        className="my-4"
+        onSubmit={submitHandler}
+        ref={inputRef}
+        method="post"
+      >
         <Row>
           <Col md={6}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -67,21 +79,16 @@ const FormFIeld = () => {
             </Form.Group>
           </Col>
           <Col md={12}>
-            
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">   
-            <FloatingLabel
-              controlId="floatingInput"
-              label="Email address"
-              
-            >
-              <Form.Control
-                type="email"
-                placeholder="test@gmail.com"
-                name="email"
-                onChange={onChangeHandler}
-                required
-              />
-            </FloatingLabel>        
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <FloatingLabel controlId="floatingInput" label="Email address">
+                <Form.Control
+                  type="email"
+                  placeholder="test@gmail.com"
+                  name="email"
+                  onChange={onChangeHandler}
+                  required
+                />
+              </FloatingLabel>
             </Form.Group>
           </Col>
           <Col md={6}>
@@ -127,7 +134,7 @@ const FormFIeld = () => {
                 name="select"
                 required
               >
-              <option value="">select a payment option</option>
+                <option value="">select a payment option</option>
                 <option value="cod">cash On Delivery</option>
                 <option value="upi">UPI</option>
                 <option value="Net banking">Net Banking</option>

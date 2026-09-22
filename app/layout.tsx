@@ -1,10 +1,10 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
+import "./globals.css";
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: 'Burgerian | Build your perfect burger',
-  description: 'A modern burger ordering experience.',
+  title: "Burgerian | Build your perfect burger",
+  description: "A modern burger ordering experience.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
